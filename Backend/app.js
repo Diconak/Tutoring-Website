@@ -1,10 +1,15 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const { urlencoded, json } = require("body-parser");
+
+const lessonRoutes = require('./Routes/Api/lesson.js')
 
 const app = express()
 app.use(cors)
 
+
+//Server responses
 app.use(
     express.urlencoded({
       extended: false,
@@ -15,6 +20,7 @@ app.use(
 app.use(express.json())
 
 
+//Setting up cors protection
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
@@ -31,10 +37,14 @@ app.use(function (req, res, next) {
     next();
   });
 
+// Routes and requests
 app.get('/', (req, res) => {
-    res.sendcd("Hello world!");
+    res.send("Hello world!");
 })
 
+app.use('/lesson', lessonRoutes)
+
+//Error parsing for server
 app.use(function (req, res, next) {
     const error = new Error("Zahtev nije podrzan od servera");
     error.status = 405;
@@ -42,7 +52,7 @@ app.use(function (req, res, next) {
     next(error);
   });
   
-  // Obrada svih gresaka u nasoj aplikaciji
+  // error parsing
   app.use(function (error, req, res, next) {
     // console.error(error.stack);
   
@@ -54,3 +64,4 @@ app.use(function (req, res, next) {
     });
   });
   
+ module.exports = app
