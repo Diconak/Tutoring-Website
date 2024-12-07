@@ -38,8 +38,51 @@ const getByLangName = async(req, res, next) => {
 
 }
 
+const addLesson = async (req, res, next) => {
+    const {lessonNumber, langname, lessonname, description, videourl, githuburl} = req.body
+
+    try{
+        const newLesson = new lessonModel({
+            lessonNumber : lessonNumber,
+            langName : langname,
+            lessonName : lessonname,
+            description : description,
+            videoURL : videourl,
+            githuburl : githuburl
+        })
+
+        await newLesson.save()
+        res.status(201).json(newLesson)
+    }
+    catch(error) {
+        next(error)
+    }
+}
+
+const deleteLesson = async (req, res, next) => {
+    const lessonname = req.params.lessonName
+    if(!lessonname){
+        const error = new Error("Invalid param has been sent")
+        error.status(500)
+        throw error
+    }
+    try {
+        const lesson = await lessonModel.deleteOne({lessonName : lessonname}).exec()
+        if(lesson.deletedCount == 1){
+            res.status(200).json({success : true})
+        }        
+        else{
+            res.status(400).json()
+        }
+    } catch (error) {
+        next(error)
+    }
+     
+}
 
 module.exports = {
     getAllLessons,
-    getByLangName
+    getByLangName,
+    addLesson,
+    deleteLesson
 }

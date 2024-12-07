@@ -9,8 +9,9 @@ const courseSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    courseLesson : {
-        type : [Number]
+    courseLessons : {
+        type : [Number],
+        default : []
     }
 }, { collection : "courses"})
 

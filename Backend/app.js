@@ -9,6 +9,24 @@ const courseRoutes = require('./Routes/Api/course.js')
 const app = express()
 app.use(cors)
 
+//Mongo setup
+
+const dbString = "mongodb://127.0.0.1:27017/tutoringWebsite"
+
+mongoose.set("strictQuery", false)
+mongoose.connect(dbString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+
+mongoose.connection.once("open", function () {
+  console.log("Successfull connection to db");
+});
+
+mongoose.connection.on("error", function (err) {
+  console.log(err);
+});
+
 
 //Server responses
 app.use(
