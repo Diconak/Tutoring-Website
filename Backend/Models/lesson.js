@@ -5,6 +5,10 @@ const lessonSchema = new mongoose.Schema({
         type : Number,
         required : true
     },
+    langName : {
+        type : String,
+        required : true
+    },
     lessonName : {
         type: String,
         required : true

@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const { urlencoded, json } = require("body-parser");
 
 const lessonRoutes = require('./Routes/Api/lesson.js')
+const courseRoutes = require('./Routes/Api/course.js')
 
 const app = express()
 app.use(cors)
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/lesson', lessonRoutes)
+app.use('/course', courseRoutes)
 
 //Error parsing for server
 app.use(function (req, res, next) {
