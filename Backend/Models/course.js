@@ -9,13 +9,14 @@ const courseSchema = new mongoose.Schema({
         type : String,
         required : true
     },
-    courseLessons : {
-        type : [Number],
+    courseLessons : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref: "lessons",
         default : []
-    }
+    }]
 }, { collection : "courses"})
 
-const courseModel = mongoose.model("course", courseSchema)
+const courseModel = mongoose.model("courses", courseSchema)
 
 module.exports = {
     courseModel

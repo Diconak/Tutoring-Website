@@ -62,13 +62,9 @@ const addCourse = async (req, res, next) => {
     }
 }
 
-const addLessonToCourse = async (req, res, next) => {
-    //TO-DO after adding ref to Lesson in model 
-} 
 
 module.exports = {
     getAllCourses,
     getCourseByName,
-    addCourse,
-    addLessonToCourse
+    addCourse
 }

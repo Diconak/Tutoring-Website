@@ -1,11 +1,14 @@
 const lessonSchema = require('../Models/lesson.js')
+const courseSchema = require('../Models/course.js')
 const mongoose = require('mongoose')
 
 const lessonModel = lessonSchema.lessonModel
+const courseModel = courseSchema.courseModel
+
 
 const getAllLessons = async (req, res, next) => {
     try{
-        const lessons = await lessonModel.find().sort({lessonNumber : -1}).exec();
+        const lessons = await lessonModel.find().sort({langName : 1, lessonNumber : 1}).exec();
         if(lessons){
             res.status(200).json(lessons)
         }
@@ -43,6 +46,7 @@ const addLesson = async (req, res, next) => {
 
     try{
         const newLesson = new lessonModel({
+            _id : mongoose.Types.ObjectId(),
             lessonNumber : lessonNumber,
             langName : langname,
             lessonName : lessonname,
@@ -52,7 +56,18 @@ const addLesson = async (req, res, next) => {
         })
 
         await newLesson.save()
-        res.status(201).json(newLesson)
+        const cours = await courseModel.findOne({courseName : langname}).exec()
+        let courseLessons = cours.courseLessons
+        if(cours){
+            courseLessons.push(newLesson._id)
+            cours.updateOne({
+                courseLessons : courseLessons
+            })
+            res.status(200).json(newLesson)
+        }
+        else{
+            res.status(404).json()
+        }
     }
     catch(error) {
         next(error)
@@ -79,6 +94,7 @@ const deleteLesson = async (req, res, next) => {
     }
      
 }
+
 
 module.exports = {
     getAllLessons,

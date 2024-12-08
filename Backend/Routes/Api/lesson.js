@@ -8,7 +8,4 @@ router.get('/langName/:langname', controller.getByLangName)
 router.post('/addLesson', controller.addLesson)
 router.delete('/deleteLesson/:lessonName', controller.deleteLesson)
 
-module.exports = {
-    router
-
-}
+module.exports = router

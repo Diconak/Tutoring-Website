@@ -7,13 +7,14 @@ const lessonRoutes = require('./Routes/Api/lesson.js')
 const courseRoutes = require('./Routes/Api/course.js')
 
 const app = express()
-app.use(cors)
+app.use(cors())
 
 //Mongo setup
 
 const dbString = "mongodb://127.0.0.1:27017/tutoringWebsite"
 
 mongoose.set("strictQuery", false)
+//TO-DO check why these are depricated
 mongoose.connect(dbString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -61,8 +62,8 @@ app.get('/', (req, res) => {
     res.send("Hello world!");
 })
 
-app.use('/lesson', lessonRoutes)
-app.use('/course', courseRoutes)
+app.use("/lesson", lessonRoutes);
+app.use("/course", courseRoutes);
 
 //Error parsing for server
 app.use(function (req, res, next) {

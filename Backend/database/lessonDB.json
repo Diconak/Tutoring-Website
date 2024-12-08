@@ -1,0 +1,45 @@
+[{
+    "_id": {
+      "$oid": "63c89196cab11c66c151dc8c"
+    },
+    "lessonNumber": 1,
+    "langName": "C++",
+    "lessonName": "Introduction",
+    "Description": "An introduction lesson into C++",
+    "videoUrl": "www.videourl.com",
+    "githubLink": "www.githuburl.com"
+  },
+  {
+    "_id": {
+      "$oid": "63c891b8cab11c66c151dc95"
+    },
+    "lessonNumber": 2,
+    "langName": "C++",
+    "lessonName": "Second Class",
+    "Description": "Second class of C++",
+    "videoUrl": "www.videourl2.com",
+    "githubLing": "www.github2.com"
+  },
+  {
+    "_id": {
+      "$oid": "63c8922dcab11c66c151dca3"
+    },
+    "lessonNumber": 1,
+    "langName": "Python",
+    "lessonName": "Introduction into Python",
+    "Description": "An introduction lesson into Python",
+    "videoUrl": "www.videourl3.com",
+    "githubLing": "www.github3.com"
+  },
+  {
+    "_id": {
+      "$oid": "63c89246cab11c66c151dcaa"
+    },
+    "lessonNumber": 2,
+    "langName": "Python",
+    "lessonName": "Second Class",
+    "Description": "Second class of Python",
+    "videoUrl": "www.videourl4.com",
+    "githubLing": "www.github4.com"
+  }
+]  

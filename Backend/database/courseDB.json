@@ -1,0 +1,17 @@
+[{
+    "_id": {
+      "$oid": "63c8925acab11c66c151dcb1"
+    },
+    "courseName": "C++",
+    "level": "Begginer",
+    "courseLessons": []
+  },
+  {
+    "_id": {
+      "$oid": "63c89281cab11c66c151dcb8"
+    },
+    "courseName": "Python",
+    "level": "Begginer",
+    "courseLessons": []
+  }
+]
