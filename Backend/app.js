@@ -1,8 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const { urlencoded, json } = require("body-parser");
-
 const lessonRoutes = require('./Routes/Api/lesson.js')
 const courseRoutes = require('./Routes/Api/course.js')
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const couresSchema = require("../Models/course.js");
+const couresSchema = require("../../Models/course.js");
 
 const courseModel = couresSchema.courseModel;
 const router = express.Router();

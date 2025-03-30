@@ -1,6 +1,6 @@
 const express = require("express");
-const lessonSchema = require("../Models/lesson.js");
-const courseSchema = require("../Models/course.js");
+const lessonSchema = require("../../Models/lesson.js");
+const courseSchema = require("../../Models/course.js");
 const mongoose = require("mongoose");
 
 const lessonModel = lessonSchema.lessonModel;

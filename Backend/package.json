@@ -1,12 +1,16 @@
 {
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon -L server.js"
+  },
   "dependencies": {
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "mongoose": "^8.8.4",
-    "nodemon": "^3.1.7"
+    "mongoose": "^8.8.4"
   },
   "devDependencies": {
-    "prisma": "^6.5.0"
+    "prisma": "^6.5.0",
+    "nodemon": "^3.1.7"
   }
 }
