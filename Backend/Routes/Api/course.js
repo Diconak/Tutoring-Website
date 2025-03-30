@@ -1,11 +1,61 @@
-const express = require("express")
-const courseController = require("../../Controllers/course.js")
-const router = express.Router()
+const express = require("express");
+const mongoose = require("mongoose");
+const couresSchema = require("../Models/course.js");
 
-router.get("/", courseController.getAllCourses)
-router.get("/:courseName", courseController.getCourseByName)
+const courseModel = couresSchema.courseModel;
+const router = express.Router();
 
-router.post("/addCourse", courseController.addCourse)
+router.get("/", async (req, res, next) => {
+  try {
+    const courses = await courseModel.find().exec();
+    if (courses) {
+      res.status(200).json(courses);
+    } else {
+      res.status(400).json();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
+router.get("/:courseName", async (req, res, next) => {
+  const coursename = req.parms.coursename;
+  if (!coursename) {
+    const error = new Error("No name has courseName has been sent");
+    error.status = 400;
+    throw error;
+  }
+  try {
+    const course = await courseModel.find({ courseName: coursename }).exec();
+    if (course) {
+      res.status(200).json(course);
+    } else {
+      res.status(400).json();
+    }
+  } catch (error) {
+    next(error);
+  }
+});
 
-module.exports = router
+router.post("/addCourse", async (req, res, next) => {
+  const { coursename, level } = req.body;
+  if (!coursename || !level) {
+    const error = new Error("Incorrect body in addCourse function");
+    error.status = 400;
+    throw error;
+  }
+
+  try {
+    const newCourse = new courseModel({
+      courseName: coursename,
+      level: level,
+    });
+
+    await newCourse.save();
+    res.status(201).json(newCourse);
+  } catch (error) {
+    next(error);
+  }
+});
+
+module.exports = router;
