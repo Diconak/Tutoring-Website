@@ -9,22 +9,22 @@ app.use(cors())
 
 //Mongo setup
 
-const dbString = "mongodb://127.0.0.1:27017/tutoringWebsite"
+// const dbString = "mongodb://127.0.0.1:27017/tutoringWebsite"
 
-mongoose.set("strictQuery", false)
-//TO-DO check why these are depricated
-mongoose.connect(dbString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// mongoose.set("strictQuery", false)
+// //TO-DO check why these are depricated
+// mongoose.connect(dbString, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// })
 
-mongoose.connection.once("open", function () {
-  console.log("Successfull connection to db");
-});
+// mongoose.connection.once("open", function () {
+//   console.log("Successfull connection to db");
+// });
 
-mongoose.connection.on("error", function (err) {
-  console.log(err);
-});
+// mongoose.connection.on("error", function (err) {
+//   console.log(err);
+// });
 
 
 //Server responses

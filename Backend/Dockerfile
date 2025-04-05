@@ -1,9 +1,10 @@
-FROM node:23-alpine
+FROM node:21-alpine
 
-WORKDIR /app
+#Setup the base directory
+WORKDIR /app/
 
 # Copy package files first for better caching
-COPY package*.json ./
+COPY ./package*.json ./
 
 # Install dependencies
 RUN npm install
@@ -11,8 +12,7 @@ RUN npm install
 # Copy all other files
 COPY . .
 
-# Generate Prisma client
-
+# Expose port
 EXPOSE 3000
 
 #RUN npx prisma generate 
